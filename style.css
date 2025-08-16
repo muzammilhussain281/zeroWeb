@@ -1,0 +1,491 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:  sans-serif;   
+}
+/* header */
+
+.navbar {
+    height: 70px;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: 1280px;
+}
+
+.nav2 {
+    width: 1200px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #ffffff;
+    
+}
+
+.logo {
+    width: 100px;
+    height: 25px;
+    background-image: url(zero-lifestyle-logo_5b9310b8-4d88-410b-84d0-b1f7fada86b2.avif);
+    background-size: cover;
+    display: block;
+    
+
+    
+}
+
+.nav2 a {
+    text-decoration: none;
+color: #ffffff;
+
+}
+
+.header-icon {
+    height: 18px;
+    width: 70px;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+/* hero-section */
+
+.hero-section {
+    height: 30rem;
+    background-image: url(azaadi-banner_1.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* shopping */
+
+.countdown {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 30px auto;
+      max-width: 600px;
+      border: 2px solid #3c006b; /* outer border */
+      border-radius: 8px;
+      overflow: hidden;
+      height: 93.66px;
+    }
+
+    .time-box {
+      flex: 1;
+      text-align: center;
+      padding: 30px 0;
+      border-right: 2px solid #3c006b;
+    }
+
+    .time-box:last-child {
+      border-right: none;
+    }
+
+    .time-box span {
+      display: block;
+      font-size: 50px;
+      font-weight: bold;
+      color: #3c006b;
+    }
+
+    .time-box p {
+      margin-top: 10px;
+      font-size: 15px;
+      letter-spacing: 2px;
+      color: #3c006b;
+    }
+  
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    margin-top: 40px;
+}
+
+.tabs-link {
+    height: 137.5px;
+    width: 100px;
+    justify-content: space-evenly;
+}
+
+.deal{
+    height: 100px;
+    width: 100px;
+    background-image: url(deal_1.avif);
+    background-size: cover;
+}
+
+.deals {
+    height: 137.5px;
+    width: 100px;
+}
+
+.tab-image {
+    height: 100px;
+    width: 100px;
+}
+
+.tabs-link {
+    height: 137.5px;
+    width: 1130px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+  margin: 0 auto; /* center horizontally */
+  padding: 20px;
+  text-align: center;
+}
+
+.tabs {
+    height: 137px;
+    width: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-right: 75px;
+    background-size: 100px;
+}
+
+.hot-deals {
+    background-image: url(deal_1.avif);
+}
+
+.watch{
+    background-image: url(smartwatch_3.avif);
+}
+
+.earbuds {
+    background-image: url(earbuds_2.avif);
+}
+
+.headphones {
+    background-image: url(headphone_2.avif);
+}
+
+
+.container-megacards {
+    height: 1950px;
+    padding: 0px 40px;
+}
+
+.product-cards {
+    width: 367px;
+    height: 182px;
+    list-style-type: none;    
+    display: inline-block;
+    margin: 0px 0px 30px;
+    padding: 0px 15px;
+    ;
+}
+
+.product-box-azaadi {
+    width: 370px;
+    height: 182px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+
+}
+
+.pbazaadi-image {
+    height: 182.60px;
+    width: 175px;
+    background: linear-gradient(to bottom, #f4ffe8, #8aff33);
+   
+}
+
+.badge-d {
+    color: #ffffff;
+    background-color: #ff0000;
+    font-size: 11px;
+    padding: 3px 8px;
+}
+
+.images {
+    width: 136px;
+    height: 146px;
+    
+    padding: 10px 0px 0px;
+}
+
+.rates {
+    width: 202.40px;
+    height: 163px;
+    padding: 10px;
+}
+
+.old {
+    text-decoration: line-through;
+}
+
+.title {
+    width: 182.40px;
+    height: 55.5px;
+}
+
+.big-title {
+    text-decoration: none;
+    color: black;
+    width: 143px;
+    height: 22.5px;
+    font-size: 18.75px;
+    margin: 0px 0px 5px;
+    font-weight: 570;
+}
+
+.features {
+    width: 182.40px;
+    height: 18px;
+    font-size: 12px;
+    margin: 0px 0px 5px;
+    padding: 0px 5px 0px 0px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.rating span {
+    color: gold;
+    font-size: 16px;
+    margin-right: 5px;
+}
+
+.price {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price del {
+    color: gray;
+    margin-right: 5px;
+}
+
+.price .old {
+    color: black;
+}
+
+.sale-price {
+    background: green;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+/* 2nd section */
+
+.sec-product-img {
+    background-image: linear-gradient(to top, beige, #f9f9f9);;
+}
+
+.sec-container-megacards {
+    width: 1280px;
+    height: 1850px;
+    padding: 0px px;
+}
+
+.pba-sec {
+    border-radius: 0px;
+    border: 0.8px solid #ccc;
+}
+
+
+.second-head-img {
+    width: 1200;
+    height: 77.44;
+    margin: 15px 0px 30px ;
+    display: flex;
+    justify-content: center;
+}
+
+.second-head-img img {
+    width: 725px;
+    height: 77.44px;
+    padding: 0px 15px;
+}
+
+.second-sec {  
+    margin: 0px 0px 30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.second-sec ul {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.sec-badge-d {
+    background-color: green;
+}
+
+.sec-sale-price {
+    background-color: black;
+}
+
+.sec-rates {
+    width: 207.7px;
+} 
+
+
+
+
+/* footer */
+
+.zero-logo {
+    height: 37px;
+    width: 150px;
+}
+
+.footer {
+    width: 1280px;
+    height: 300.7px;
+    padding: 72px 0px 50px;
+    font-size: 15px;
+}
+
+.container1 {
+    width: 1280px;
+    height: 322.7px;
+    padding: 0px 40px;
+    font-size: 15px;
+    display: flex;
+
+}
+
+.item-list {
+    width: 1200px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+
+
+
+.footer-image {
+    width: 150px;
+    height: 252.71px;
+    list-style-type: none;
+}
+
+.quick-list-table {
+    width: 159.13px;
+    height: 252.71px;
+    color: #282828;
+}
+
+.item-list p {
+    width: 159.13px;
+    height: 14.77;
+    font-size: 12px;
+    color: #282828;
+    margin: 0px 0px 20px;
+    font-weight:600;
+}
+
+.quick-list-table {
+    list-style-type: none;
+}
+
+.quick-list-table li {
+    width: 159.13;
+    height: 25.99px;
+    padding: 6px 0px 0px;
+    font-weight: 300;
+}
+
+.support-list-table {
+    list-style-type: none;
+}
+
+.support-list-table li {
+    width: 159.13;
+    height: 25.99px;
+    padding: 6px 0px 0px;
+    font-weight: 300
+}
+
+.policy-list-table {
+    list-style-type: none;
+}
+
+.policy-list-table li {
+    width: 159.13;
+    height: 25.99px;
+    padding: 6px 0px 0px;
+    font-weight: 300
+}
+    
+.social-section {
+    max-width: 300px;
+}
+
+.social-section h3 {
+    font-size: 14px;
+    letter-spacing: 1px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.social-icons {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 50px);
+    grid-template-rows: repeat(2, 50px);
+    border: 1px solid #ccc;
+}
+
+.social-icons li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    overflow: hidden; /* keep layer inside */
+}
+
+.social-icons li::before {
+    content: "";
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    transition: bottom 0.3s cubic-bezier(.215,.61,.355,1);
+    z-index: 0;
+}
+
+.social-icons a {
+    color: black;
+    font-size: 20px;
+    text-decoration: none;
+    z-index: 1; /* icon stays above the layer */
+    transition: color 0.3s cubic-bezier(.215,.61,.355,1);
+}
+.social-icons a i {
+    font-weight: 100;
+    font-size: 1.2rem;
+}
+.social-icons li:hover::before {
+    bottom: 0; /* slide layer up */
+}
+
+.social-icons li:hover a {
+    color: white; /* change icon color */
+}
