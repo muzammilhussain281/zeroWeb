@@ -3,1464 +3,972 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>zero</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Zero Lifestyle - Electronics Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            --primary-color: #3c006b;
+            --secondary-color: #8aff33;
+            --accent-color: #ff0000;
+            --text-color: #282828;
+            --light-gray: #f9f9f9;
+            --white: #ffffff;
+            --black: #000000;
+            --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Utility Classes */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--black);
+            color: var(--white);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            height: 70px;
+        }
+
+        .logo {
+            width: 100px;
+            height: 25px;
+            background-image: url('zero-lifestyle-logo_5b9310b8-4d88-410b-84d0-b1f7fada86b2.avif');
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .header-icons i {
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .header-icons i:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 30rem;
+            background-image: url('azaadi-banner_1.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-top: 70px;
+        }
+
+        /* Sale Banner */
+        .sale-banner {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 2rem auto;
+            max-width: 600px;
+            border: 2px solid var(--primary-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            height: 5.5rem;
+        }
+
+        .time-box {
+            flex: 1;
+            text-align: center;
+            padding: 1rem 0;
+            border-right: 2px solid var(--primary-color);
+        }
+
+        .time-box:last-child {
+            border-right: none;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .time-box p {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        /* Category Tabs */
+        .tabs-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        .tab {
+            width: 100px;
+            height: 100px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .tab:hover {
+            transform: scale(1.1);
+        }
+
+        .hot-deals {
+            background-image: url('deal_1.avif');
+        }
+
+        .watch {
+            background-image: url('smartwatch_3.avif');
+        }
+
+        .earbuds {
+            background-image: url('earbuds_2.avif');
+        }
+
+        .headphones {
+            background-image: url('headphone_2.avif');
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem 0;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: var(--white);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            position: relative;
+            height: 180px;
+            background: linear-gradient(to bottom, #f4ffe8, #8aff33);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image.alt-bg {
+            background: linear-gradient(to top, beige, #f9f9f9);
+        }
+
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: var(--accent-color);
+            color: var(--white);
+            font-size: 0.8rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .badge.green {
+            background-color: green;
+        }
+
+        .product-image img {
+            max-height: 80%;
+            object-fit: contain;
+        }
+
+        .product-details {
+            padding: 1rem;
+        }
+
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--black);
+        }
+
+        .product-features {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.8rem;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-rating span {
+            color: gold;
+            margin-right: 0.3rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+        }
+
+        .discounted-price {
+            font-weight: 600;
+        }
+
+        .sale-price {
+            background-color: green;
+            color: var(--white);
+            padding: 0.5rem;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .sale-price.black {
+            background-color: var(--black);
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .section-header img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--light-gray);
+            padding: 3rem 0 1rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo img {
+            width: 150px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #555;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .footer-column ul li:hover {
+            color: var(--primary-color);
+        }
+
+        .social-section h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.5rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--black);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--black);
+            transition: var(--transition);
+            z-index: 0;
+        }
+
+        .social-icon i {
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover::before {
+            bottom: 0;
+        }
+
+        .social-icon:hover i {
+            color: var(--white);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.8rem;
+            color: #777;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 2rem 0;
+                gap: 2rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-section {
+                height: 20rem;
+            }
+
+            .countdown {
+                height: 4.5rem;
+            }
+
+            .time-box span {
+                font-size: 1.8rem;
+            }
+
+            .time-box p {
+                font-size: 0.8rem;
+            }
+
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                height: 15rem;
+            }
+
+            .countdown {
+                height: 4rem;
+            }
+
+            .time-box span {
+                font-size: 1.5rem;
+            }
+
+            .time-box p {
+                font-size: 0.7rem;
+            }
+
+            .tabs-container {
+                gap: 1rem;
+            }
+
+            .tab {
+                width: 80px;
+                height: 80px;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="navbar">
-        <div class="nav2">
-            <span class="logo"></span>
-            <a href="#">Home</a>
-            <a href="#">Smart Watches</a>
-            <a href="#">Zero Earbuds</a>
-            <a href="#">Headphones</a>
-            <a href="#">Azadi Sale</a>
-            <a href="#">Vision 2025</a>
-            <a href="#">Support</a>        
-    </div>
-    <div class="header-icon">
-        <i class="fa-solid fa-magnifying-glass"></i>
-        <i class="fa-solid fa-cart-shopping"></i>
-    </div>
-    </div>
-  </header>  
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo"></div>
+                
+                <ul class="nav-links">
+                    <a href="#">Home</a>
+                    <a href="#">Smart Watches</a>
+                    <a href="#">Zero Earbuds</a>
+                    <a href="#">Headphones</a>
+                    <a href="#">Azadi Sale</a>
+                    <a href="#">Vision 2025</a>
+                    <a href="#">Support</a>
+                </ul>
+                
+                <div class="header-icons">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <div class="hamburger">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-  <!-- hero section -->
-   <div class="hero-section"></div>
+    <!-- Hero Section -->
+    <section class="hero-section"></section>
 
-   <!-- shopping -->
-    <div class="container">
-    <h2>BIGGEST AZAADI SALE LIVE NOW</h2>
-    </div>
+    <!-- Sale Banner -->
+    <section class="sale-banner container">
+        <h2>BIGGEST AZAADI SALE LIVE NOW</h2>
+    </section>
 
+    <!-- Countdown Timer -->
     <div class="countdown">
-    <div class="time-box">
-      <span id="hours">00</span>
-      <p>HOURS</p>
-    </div>
-    <div class="time-box">
-      <span id="minutes">00</span>
-      <p>MINUTES</p>
-    </div>
-    <div class="time-box">
-      <span id="seconds">00</span>
-      <p>SECONDS</p>
-    </div>
-  </div>
-
-  <script>
-    // Set countdown target (example: 8 hours from now)
-    let countDownDate = new Date().getTime() + (8 * 60 * 60 * 1000);
-
-    let timer = setInterval(function() {
-      let now = new Date().getTime();
-      let distance = countDownDate - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        document.getElementById("hours").innerText = "00";
-        document.getElementById("minutes").innerText = "00";
-        document.getElementById("seconds").innerText = "00";
-        return;
-      }
-
-      let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      let seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      document.getElementById("hours").innerText = hours.toString().padStart(2, "0");
-      document.getElementById("minutes").innerText = minutes.toString().padStart(2, "0");
-      document.getElementById("seconds").innerText = seconds.toString().padStart(2, "0");
-    }, 1000);
-  </script>
-
-
-
-    <div class="tabs-link">
-<div class="tabs hot-deals"></div>
-<div class="tabs watch"></div>
-<div class="tabs earbuds"></div>
-<div class="tabs headphones"></div>
-</div>
-
-
-
-<div class="container-megacards">
-    <ul class="shopitmes">
-      <li class="earbus product-cards"> 
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">80% off</span>
-                    <img src="26_b27b705e-6c28-4497-8ff3-3399c4a4e7ca_300x300.avif" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="https://zerolifestyle.co/products/gravity?variant=48634514637078" class="big-title">Gravity Earbuds</a>
-        </h2>
-        <span class="features">Enviromental Noise Cancel</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">3,499</span>
+        <div class="time-box">
+            <span id="hours">00</span>
+            <p>HOURS</p>
         </div>
-        <div class="sale-price">Sale Price: Rs.2,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">77% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display | Limited Stock</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
+        <div class="time-box">
+            <span id="minutes">00</span>
+            <p>MINUTES</p>
         </div>
-        <div class="sale-price">Sale Price: Rs.4,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">76% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Ignite Smartwatch</a>
-        </h2>
-        <span class="features">Up to 9 Days Battery | BT Calling
-</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.97
-        </div> 
-         <div class="price">
-            <del>Rs.21,4999</del> <span class="old">5,999</span>
+        <div class="time-box">
+            <span id="seconds">00</span>
+            <p>SECONDS</p>
         </div>
-        <div class="sale-price">Sale Price: Rs.4,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">79% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/JX98-01_300x300.webp?v=1723422176" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Carbon Earbuds</a>
-        </h2>
-        <span class="features">Loud Sound | ENC</span>
     </div>
-        <div class="rating">
-            <span>★</span> 4.8
-        </div> 
-         <div class="price">
-            <del>Rs.14,499</del> <span class="old">3,999</span>
+
+    <!-- Category Tabs -->
+    <div class="container">
+        <div class="tabs-container">
+            <div class="tab hot-deals" title="Hot Deals"></div>
+            <div class="tab watch" title="Smart Watches"></div>
+            <div class="tab earbuds" title="Earbuds"></div>
+            <div class="tab headphones" title="Headphones"></div>
         </div>
-        <div class="sale-price">Sale Price: Rs.2,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">76% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Angle-4_2_300x300.webp?v=1742454750" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Rover Pro Earbuds</a>
-        </h2>
-        <span class="features">Aerofit Design | Quad Mic & ENC</span>
     </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">3,999</span>
+
+    <!-- Products Grid -->
+    <div class="container">
+        <div class="products-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">80% off</span>
+                    <img src="26_b27b705e-6c28-4497-8ff3-3399c4a4e7ca_300x300.avif" alt="Gravity Earbuds">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Gravity Earbuds</h3>
+                    <p class="product-features">Environmental Noise Cancel</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.9
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.14,999</span>
+                        <span class="discounted-price">Rs.3,499</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.2,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">77% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" alt="Luna Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Luna Smartwatch</h3>
+                    <p class="product-features">1.39" HD Display | Limited Stock</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.87
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.21,999</span>
+                        <span class="discounted-price">Rs.5,999</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.4,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">76% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" alt="Ignite Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Ignite Smartwatch</h3>
+                    <p class="product-features">Up to 9 Days Battery | BT Calling</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.97
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.21,499</span>
+                        <span class="discounted-price">Rs.5,999</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.4,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">79% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/JX98-01_300x300.webp?v=1723422176" alt="Carbon Earbuds">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Carbon Earbuds</h3>
+                    <p class="product-features">Loud Sound | ENC</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.8
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.14,499</span>
+                        <span class="discounted-price">Rs.3,999</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.2,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">76% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/Angle-4_2_300x300.webp?v=1742454750" alt="Rover Pro Earbuds">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Rover Pro Earbuds</h3>
+                    <p class="product-features">Aerofit Design | Quad Mic & ENC</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.85
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.14,999</span>
+                        <span class="discounted-price">Rs.3,999</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.3,499</div>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">40% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" alt="Edge Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Edge Smartwatch</h3>
+                    <p class="product-features">Curved edge design</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.84
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.9,999</span>
+                        <span class="discounted-price">Rs.7,499</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.5,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 7 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">74% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/wave_blue_300x300.webp?v=1732361974" alt="Wave Earbuds">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Wave Earbuds</h3>
+                    <p class="product-features">Quad Mic & ENC | Best Seller</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.87
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.14,999</span>
+                        <span class="discounted-price">Rs.4,499</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.3,799</div>
+                </div>
+            </div>
+
+            <!-- Product Card 8 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <span class="badge">72% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/Zero_Quantum_Green_01_1_300x300.webp?v=1720007567" alt="Quantum Earbuds">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Quantum Earbuds</h3>
+                    <p class="product-features">Active Noise Cancellation</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.91
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.19,999</span>
+                        <span class="discounted-price">Rs.5,999</span>
+                    </div>
+                    <div class="sale-price">Sale Price: Rs.5,499</div>
+                </div>
+            </div>
         </div>
-        <div class="sale-price">Sale Price: Rs.3,499</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">40% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Edge Smartwatch</a>
-        </h2>
-        <span class="features">ECurved edge design</span>
     </div>
-        <div class="rating">
-            <span>★</span> 4.84
-        </div> 
-         <div class="price">
-            <del>Rs.9,999</del> <span class="old">7,499</span>
+
+    <!-- Second Section -->
+    <div class="container">
+        <div class="section-header">
+            <img src="//zerolifestyle.co/cdn/shop/files/wearables_2.png?v=1752492672&width=2000" alt="Wearables Collection">
         </div>
-        <div class="sale-price">Sale Price: Rs.5,999</div>
-    
-    </div>    
- </div> 
-</li>
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">74% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/wave_blue_300x300.webp?v=1732361974" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Wave Earbuds</a>
-        </h2>
-        <span class="features">Quad Mic & ENC | Best Seller ...</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">4,499</span>
+        
+        <div class="products-grid">
+            <!-- Product Card 1 -->
+            <div class="product-card">
+                <div class="product-image alt-bg">
+                    <span class="badge green">77% off</span>
+                    <img src="//zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" alt="Luna Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Luna Smartwatch</h3>
+                    <p class="product-features">1.39" HD Display</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.87
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.21,999</span>
+                        <span class="discounted-price">Rs.5,999</span>
+                    </div>
+                    <div class="sale-price black">Sale Price: Rs.4,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div class="product-card">
+                <div class="product-image alt-bg">
+                    <span class="badge green">76% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" alt="Ignite Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Ignite Smartwatch</h3>
+                    <p class="product-features">Up to 9 Days Battery</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.97
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.21,499</span>
+                        <span class="discounted-price">Rs.5,999</span>
+                    </div>
+                    <div class="sale-price black">Sale Price: Rs.4,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div class="product-card">
+                <div class="product-image alt-bg">
+                    <span class="badge green">40% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" alt="Edge Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Edge Smartwatch</h3>
+                    <p class="product-features">Curved edge design</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.85
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.9,999</span>
+                        <span class="discounted-price">Rs.7,499</span>
+                    </div>
+                    <div class="sale-price black">Sale Price: Rs.5,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div class="product-card">
+                <div class="product-image alt-bg">
+                    <span class="badge green">58% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/LunaPro_2_300x300.webp?v=1754740852" alt="Luna Pro">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Luna Pro</h3>
+                    <p class="product-features">1.40" HD Display</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.87
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.16,999</span>
+                        <span class="discounted-price">Rs.7,999</span>
+                    </div>
+                    <div class="sale-price black">Sale Price: Rs.6,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div class="product-card">
+                <div class="product-image alt-bg">
+                    <span class="badge green">69% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/Black_4_c986e7b0-a61c-41d3-a8ce-4a469882bade_300x300.webp?v=1752432598" alt="Orbit 2 Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Orbit 2 Smartwatch</h3>
+                    <p class="product-features">1.38 Wide Display</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.85
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.22,999</span>
+                        <span class="discounted-price">Rs.8,499</span>
+                    </div>
+                    <div class="sale-price black">Sale Price: Rs.6,999</div>
+                </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div class="product-card">
+                <div class="product-image alt-bg">
+                    <span class="badge green">69% off</span>
+                    <img src="https://zerolifestyle.co/cdn/shop/files/STRAP01_300x300.webp?v=1754740631" alt="Crown Smartwatch">
+                </div>
+                <div class="product-details">
+                    <h3 class="product-title">Crown Smartwatch</h3>
+                    <p class="product-features">True Always On</p>
+                    <div class="product-rating">
+                        <span>★</span> 4.9
+                    </div>
+                    <div class="product-price">
+                        <span class="original-price">Rs.29,999</span>
+                        <span class="discounted-price">Rs.11,999</span>
+                    </div>
+                    <div class="sale-price black">Sale Price: Rs.5,999</div>
+                </div>
+            </div>
         </div>
-        <div class="sale-price">Sale Price: Rs.3,799</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">72% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Zero_Quantum_Green_01_1_300x300.webp?v=1720007567" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Quantum Earbuds</a>
-        </h2>
-        <span class="features">Active Noise Cancellation | F</span>
     </div>
-        <div class="rating">
-            <span>★</span> 4.91
-        </div> 
-         <div class="price">
-            <del>Rs.19,999</del> <span class="old">5,999</span>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column footer-logo">
+                    <img src="https://zerolifestyle.co/cdn/shop/files/BLACK_LOGO.png?v=1727159839&width=300" alt="Zero Lifestyle Logo">
+                </div>
+                
+                <div class="footer-column">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li>Home</li>
+                        <li>Smart Watches</li>
+                        <li>Ear Buds</li>
+                        <li>Men Smartwatches</li>
+                        <li>Women Smartwatches</li>
+                        <li>Sports Smartwatches</li>
+                        <li>Blogs</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>SUPPORT</h3>
+                    <ul>
+                        <li>FAQs</li>
+                        <li>Track Your Order</li>
+                        <li>Warranty Registration</li>
+                        <li>Shipping Details</li>
+                        <li>Terms & Conditions</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>POLICY</h3>
+                    <ul>
+                        <li>Privacy Policy</li>
+                        <li>Warranty Policy</li>
+                        <li>Corporate Policy</li>
+                        <li>Register Complains</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column social-section">
+                    <h3>FOLLOW US</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-x-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-snapchat-ghost"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Zero Lifestyle. All Rights Reserved.</p>
+            </div>
         </div>
-        <div class="sale-price">Sale Price: Rs.5,499</div>
-    
-    </div>    
- </div> 
-</li>
+    </footer>
 
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">50% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/striker_black_2_300x300.webp?v=1751031249" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Striker Earbuds</a>
-        </h2>
-        <span class="features">Low latency Gaming Mode</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 5.0
-        </div> 
-         <div class="price">
-            <del>Rs.11,999</del> <span class="old">6,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">80% off</span>
-                    <img src="26_b27b705e-6c28-4497-8ff3-3399c4a4e7ca_300x300.avif" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Gravity Earbuds</a>
-        </h2>
-        <span class="features">Enviromental Noise Cancel</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">3,499</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.2,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">77% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display | Limited Stock</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.4,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">76% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Ignite Smartwatch</a>
-        </h2>
-        <span class="features">Up to 9 Days Battery | BT Calling
-</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.97
-        </div> 
-         <div class="price">
-            <del>Rs.21,4999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.4,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">79% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/JX98-01_300x300.webp?v=1723422176" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Carbon Earbuds</a>
-        </h2>
-        <span class="features">Loud Sound | ENC</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.8
-        </div> 
-         <div class="price">
-            <del>Rs.14,499</del> <span class="old">3,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.2,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">76% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Angle-4_2_300x300.webp?v=1742454750" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Rover Pro Earbuds</a>
-        </h2>
-        <span class="features">Aerofit Design | Quad Mic & ENC</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">3,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.3,499</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">40% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Edge Smartwatch</a>
-        </h2>
-        <span class="features">ECurved edge design</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.84
-        </div> 
-         <div class="price">
-            <del>Rs.9,999</del> <span class="old">7,499</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,999</div>
-    
-    </div>    
- </div> 
-</li>
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">74% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/wave_blue_300x300.webp?v=1732361974" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Wave Earbuds</a>
-        </h2>
-        <span class="features">Quad Mic & ENC | Best Seller ...</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">4,499</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.3,799</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">72% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Zero_Quantum_Green_01_1_300x300.webp?v=1720007567" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Quantum Earbuds</a>
-        </h2>
-        <span class="features">Active Noise Cancellation | F</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.91
-        </div> 
-         <div class="price">
-            <del>Rs.19,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,499</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">57% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/striker_black_2_300x300.webp?v=1751031249" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Striker Earbuds</a>
-        </h2>
-        <span class="features">Low latency Gaming Mode</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 5.0
-        </div> 
-         <div class="price">
-            <del>Rs.11,999</del> <span class="old">6,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">80% off</span>
-                    <img src="26_b27b705e-6c28-4497-8ff3-3399c4a4e7ca_300x300.avif" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Gravity Earbuds</a>
-        </h2>
-        <span class="features">Enviromental Noise Cancel</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">3,499</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.2,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">77% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display | Limited Stock</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.4,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">76% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Ignite Smartwatch</a>
-        </h2>
-        <span class="features">Up to 9 Days Battery | BT Calling
-</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.97
-        </div> 
-         <div class="price">
-            <del>Rs.21,4999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.4,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">79% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/JX98-01_300x300.webp?v=1723422176" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Carbon Earbuds</a>
-        </h2>
-        <span class="features">Loud Sound | ENC</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.8
-        </div> 
-         <div class="price">
-            <del>Rs.14,499</del> <span class="old">3,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.2,999</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">76% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Angle-4_2_300x300.webp?v=1742454750" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Rover Pro Earbuds</a>
-        </h2>
-        <span class="features">Aerofit Design | Quad Mic & ENC</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">3,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.3,499</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">40% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Edge Smartwatch</a>
-        </h2>
-        <span class="features">ECurved edge design</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.84
-        </div> 
-         <div class="price">
-            <del>Rs.9,999</del> <span class="old">7,499</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,999</div>
-    
-    </div>    
- </div> 
-</li>
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">74% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/wave_blue_300x300.webp?v=1732361974" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Wave Earbuds</a>
-        </h2>
-        <span class="features">Quad Mic & ENC | Best Seller ...</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.14,999</del> <span class="old">4,499</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.3,799</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">72% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/Zero_Quantum_Green_01_1_300x300.webp?v=1720007567" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Quantum Earbuds</a>
-        </h2>
-        <span class="features">Active Noise Cancellation | F</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.91
-        </div> 
-         <div class="price">
-            <del>Rs.19,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,499</div>
-    
-    </div>    
- </div> 
-</li>
-
-<li class="earbus product-cards">
-        <div class="product-box-azaadi">
-                     <div class="pbazaadi-image">
-                    <span class="badge-d">50% off</span>
-                    <img src="https://zerolifestyle.co/cdn/shop/files/striker_black_2_300x300.webp?v=1751031249" class="images"> 
-           </div> 
-            <div class="rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Striker Earbuds</a>
-        </h2>
-        <span class="features">Low latency Gaming Mode</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 5.0
-        </div> 
-         <div class="price">
-            <del>Rs.11,999</del> <span class="old">6,999</span>
-        </div>
-        <div class="sale-price">Sale Price: Rs.5,999</div>
-    
-    </div>    
- </div> 
-</li>
-    </div>            
-    </ul>
-</div> 
-
-<!-- 2nd section -->
-<div class="sec-container-megacards container-megacards">
-    <div class="second-head-img">
- <img src="//zerolifestyle.co/cdn/shop/files/wearables_2.png?v=1752492672&width=2000" alt=""> 
- </div> 
- <div class="second-sec">
- <ul class=" shopitmes">
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">77% off</span>
-        <img src="//zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.4,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-   <div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">76% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Ignite Smartwatch</a>
-        </h2>
-        <span class="features">Up to 9 Days Battery</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.97
-        </div> 
-         <div class="price">
-            <del>Rs.21,499</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.4,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">40% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Edge Smartwatch</a>
-        </h2>
-        <span class="features">Curved edge design</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.9,999</del> <span class="old">7,499</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.5,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="luna-watch product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">58% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/LunaPro_2_300x300.webp?v=1754740852" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Pro</a>
-        </h2>
-        <span class="features">1.40" HD Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.16,999</del> <span class="old">7,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.6,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="luna-watch product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">69% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Black_4_c986e7b0-a61c-41d3-a8ce-4a469882bade_300x300.webp?v=1752432598" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Orbit 2 Smartwatch</a>
-        </h2>
-        <span class="features">1.38 Wide Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.22,999</del> <span class="old">8,499</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.6,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">69% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/STRAP01_300x300.webp?v=1754740631" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Crown Smartwatch</a>
-        </h2>
-        <span class="features">True Always On</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.29,999</del> <span class="old">11,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.5,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">77% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_5_7_06fe3173-2788-4db5-b939-baf0419d4d8c_300x300.webp?v=1752226024" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.4,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">50% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Starlight_1_300x300.webp?v=1725950518" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Elite Smartwatch</a>
-        </h2>
-        <span class="features">Stainless Steel Smartwatch</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.81
-        </div> 
-         <div class="price">
-            <del>Rs.19,999</del> <span class="old">11,899</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.9,899</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">52% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/2_d3c6b345-499c-4556-803e-4c31aef81269_300x300.webp?v=1733825330" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Sigma Smartwatch</a>
-        </h2>
-        <span class="features">Textured Silicone Strap</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.16,999</del> <span class="old">8,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.7,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-<li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">62% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Royale_Gold_0000_c9e7e71d-89d2-4c63-8c85-a52ccea1f59d_300x300.webp?v=1725970482" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Royal Smartwatch</a>
-        </h2>
-        <span class="features">47% Faster ZEON Processor</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.31,999</del> <span class="old">13,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.11,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-<li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">61% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Vogue_Silver_0000_300x300.webp?v=1742632877" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Vogue Smartwatch</a>
-        </h2>
-        <span class="features">ZEON Processor</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.89
-        </div> 
-         <div class="price">
-            <del>Rs.35,999</del> <span class="old">14,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.13,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">60% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/01_202a37db-cf55-4a8d-b7e2-851b2e550263_300x300.webp?v=1754740631" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Crown Smartwatch</a>
-        </h2>
-        <span class="features">True Always On</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.29,999</del> <span class="old">13,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.11,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">77% off</span>
-        <img src="//zerolifestyle.co/cdn/shop/files/Luna-_5_3_300x300.webp?v=1752225993" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.4,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-   <div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">76% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/ignite-black-02_300x300.webp?v=1722673246" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Ignite Smartwatch</a>
-        </h2>
-        <span class="features">Up to 9 Days Battery</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.97
-        </div> 
-         <div class="price">
-            <del>Rs.21,499</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.4,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">40% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/B1_218495a9-8f36-4abf-b51a-64671c0db56e_300x300.webp?v=1750168109" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Edge Smartwatch</a>
-        </h2>
-        <span class="features">Curved edge design</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.9,999</del> <span class="old">7,499</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.5,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="luna-watch product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">58% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/LunaPro_2_300x300.webp?v=1754740852" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Pro</a>
-        </h2>
-        <span class="features">1.40" HD Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.16,999</del> <span class="old">7,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.6,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="luna-watch product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">69% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Black_4_c986e7b0-a61c-41d3-a8ce-4a469882bade_300x300.webp?v=1752432598" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Orbit 2 Smartwatch</a>
-        </h2>
-        <span class="features">1.38 Wide Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.85
-        </div> 
-         <div class="price">
-            <del>Rs.22,999</del> <span class="old">8,499</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.6,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">69% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/STRAP01_300x300.webp?v=1754740631" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Crown Smartwatch</a>
-        </h2>
-        <span class="features">True Always On</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.29,999</del> <span class="old">11,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.5,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">77% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Luna-_5_7_06fe3173-2788-4db5-b939-baf0419d4d8c_300x300.webp?v=1752226024" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Luna Smartwatch</a>
-        </h2>
-        <span class="features">1.39" HD Display</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.87
-        </div> 
-         <div class="price">
-            <del>Rs.21,999</del> <span class="old">5,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.4,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">50% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Starlight_1_300x300.webp?v=1725950518" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Elite Smartwatch</a>
-        </h2>
-        <span class="features">Stainless Steel Smartwatch</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.81
-        </div> 
-         <div class="price">
-            <del>Rs.19,999</del> <span class="old">11,899</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.9,899</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">52% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/2_d3c6b345-499c-4556-803e-4c31aef81269_300x300.webp?v=1733825330" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Sigma Smartwatch</a>
-        </h2>
-        <span class="features">Textured Silicone Strap</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.16,999</del> <span class="old">8,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.7,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-<li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">62% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Royale_Gold_0000_c9e7e71d-89d2-4c63-8c85-a52ccea1f59d_300x300.webp?v=1725970482" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Royal Smartwatch</a>
-        </h2>
-        <span class="features">47% Faster ZEON Processor</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.31,999</del> <span class="old">13,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.11,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-<li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">61% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/Vogue_Silver_0000_300x300.webp?v=1742632877" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Vogue Smartwatch</a>
-        </h2>
-        <span class="features">ZEON Processor</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.89
-        </div> 
-         <div class="price">
-            <del>Rs.35,999</del> <span class="old">14,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.13,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-
-   <li class="product-cards">
-<div class="product-box-azaadi pba-sec">
-    <div class="pbazaadi-image sec-product-img">
-        <span class="badge-d sec-badge-d">60% off</span>
-        <img src="https://zerolifestyle.co/cdn/shop/files/01_202a37db-cf55-4a8d-b7e2-851b2e550263_300x300.webp?v=1754740631" alt="" class="images">
-    </div>
-    <div class="rates sec-rates">
-    <div class="title">
-        <h2>
-        <a href="#" class="big-title">Crown Smartwatch</a>
-        </h2>
-        <span class="features">True Always On</span>
-    </div>
-        <div class="rating">
-            <span>★</span> 4.9
-        </div> 
-         <div class="price">
-            <del>Rs.29,999</del> <span class="old">13,999</span>
-        </div>
-        <div class="sale-price sec-sale-price">Sale Price: Rs.11,999</div>
-    
-      
-    </div>
-</div>
-   </li> 
-   
-
- </ul> 
-</div>
-
-</div>
-
-
-
-
-
-
-<footer>
-   <hr> 
-    <div class="container1">
-  <div class="footer item-list"> 
-    <div class="footer-image">
-<img src="https://zerolifestyle.co/cdn/shop/files/BLACK_LOGO.png?v=1727159839&width=300" class="zero-logo">
-</div>
-<div class="quick-list-table">
-    <p>QUICK LINKS</p>
-    <li>Home</li>
-    <li>Smart Watches</li>
-    <li>Ear Buds</li>
-    <li>Men Smartwatches</li>
-    <li>Women Smartwatches</li>
-    <li>Sports Smartwatches</li>
-    <li>Blogs</li>
-</div>
-
-<div class="support-list-table">
-    <p>SUPPORT</p>
-    <li>FAQs</li>
-    <li>Track Your Order</li>
-    <li>Warranty Registration</li>
-    <li>Shipping Details</li>
-    <li>Terms & Conditions</li>
-</div>
-
-<div class="policy-list-table">
-    <p>POLICY</p>
-    <li>Privacy Policy</li>
-    <li>Warranty Policy</li>
-    <li>Corporate Policy</li>
-    <li>Register Complains</li>
-</div>
-
-<div class="social-section">
-    <h3>FOLLOW US</h3>
-    <ul class="social-icons">
-        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-        <li><a href="#"><i class="fab fa-x-twitter"></i></a></li>
-        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-        <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
-        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
-        <li><a href="#"><i class="fab fa-tiktok"></i></a></li>
-        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        <li><a href="#"><i class="fab fa-snapchat-ghost"></i></a></li>
-    </ul>
-</div>
-
-
-  </div>
-  </div>
-</footer>
+    <script src="script.js"> </script>
 </body>
 </html>
