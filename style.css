@@ -53,10 +53,12 @@ color: #ffffff;
 /* hero-section */
 
 .hero-section {
-    height: 10rem;
+    height: auto;
     background-image: url(azaadi-banner_1.webp);
     background-size: cover;
     background-repeat: no-repeat;
+    max-width: 100%;
+    display: block;
 }
 
 /* shopping */
